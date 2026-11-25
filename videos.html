@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LEARNHUB | Video Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="videos.css">
+</head>
+<body>
+  <header class="vl-topbar">
+    <div class="vl-topbar-inner">
+      <a class="vl-brand" href="index.html" aria-label="LEARNHUB home">
+        <span class="vl-brand-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+        <span class="vl-brand-text"><span class="learn">LEARN</span><span class="hub">HUB</span></span>
+      </a>
+      <div class="vl-search-wrap">
+        <input type="search" id="videoSearch" class="vl-search" placeholder="Search Videos" aria-label="Search videos">
+        <button type="button" id="videoSearchBtn" class="vl-search-btn" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+      <div class="vl-top-actions">
+        <a href="course/courses.html" class="vl-link-btn"><i class="fa-solid fa-book-open"></i> Courses</a>
+        <button type="button" id="openUploadBtn" class="vl-primary-btn" hidden><i class="fa-solid fa-upload"></i> Upload Video</button>
+        <div class="vl-user" id="vlUserLabel">Guest</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="vl-main">
+    <section class="vl-hero">
+      <div>
+        <p class="vl-eyebrow">LEARNHUB Video Library</p>
+        <h1>Learn with educational videos</h1>
+        <p class="vl-sub">Browse programming, networking, software, computer systems, IoT, and more. Search, filter, and watch published lessons.</p>
+      </div>
+    </section>
+
+    <section class="vl-filters" aria-label="Video filters">
+      <div class="vl-filter-group">
+        <label class="vl-filter-label" for="categoryFilter">Category</label>
+        <select id="categoryFilter" class="vl-select"><option value="all">All Categories</option></select>
+      </div>
+      <div class="vl-filter-group">
+        <label class="vl-filter-label" for="courseFilter">Course / Subcategory</label>
+        <select id="courseFilter" class="vl-select"><option value="all">All Courses</option></select>
+      </div>
+      <div class="vl-filter-group">
+        <label class="vl-filter-label" for="sortFilter">Sort</label>
+        <select id="sortFilter" class="vl-select">
+          <option value="latest">Latest Videos</option>
+          <option value="popular">Popular Videos</option>
+        </select>
+      </div>
+      <div class="vl-filter-group vl-filter-group-check" id="mineFilterWrap" hidden>
+        <label class="vl-check"><input type="checkbox" id="mineFilter"> My videos</label>
+      </div>
+    </section>
+
+    <section class="vl-section">
+      <div class="vl-section-head">
+        <h2 id="videosSectionTitle">Latest Videos</h2>
+        <p id="videosCount" class="vl-count"></p>
+      </div>
+      <div id="videosGrid" class="vl-grid" aria-live="polite"></div>
+      <div id="videosEmpty" class="vl-empty" hidden>No videos found. Try another search or filter.</div>
+    </section>
+
+    <section id="teacherPanel" class="vl-teacher-panel" hidden>
+      <div class="vl-section-head">
+        <h2>Teacher Video Management</h2>
+        <p class="vl-count">Upload and manage your published learning videos.</p>
+      </div>
+      <form id="videoUploadForm" class="vl-upload-form" enctype="multipart/form-data">
+        <input type="hidden" name="csrf_token" id="uploadCsrf">
+        <div class="vl-form-grid">
+          <label>Video title<input name="title" required maxlength="255" placeholder="e.g., Introduction to LAN"></label>
+          <label>Category<select name="category_id" id="uploadCategory" required></select></label>
+          <label>Course / Subcategory<select name="course_id" id="uploadCourse" required></select></label>
+          <label>Publication status<select name="publication_status"><option value="published">Published</option><option value="draft">Draft</option></select></label>
+        </div>
+        <label>Description<textarea name="description" rows="3" placeholder="What students will learn"></textarea></label>
+        <div class="vl-form-grid">
+          <label>Video file (MP4/WEBM/OGG/MOV/M4V, max 100MB)<input type="file" name="video_file" id="videoFileInput" accept="video/mp4,video/webm,video/ogg,video/quicktime,video/x-m4v"></label>
+          <label>Or authorized external URL (YouTube/Vimeo)<input type="url" name="external_url" id="externalUrlInput" placeholder="https://www.youtube.com/watch?v=..."></label>
+        </div>
+        <div class="vl-form-grid">
+          <label>Thumbnail (JPG/PNG/WEBP, optional)<input type="file" name="thumbnail" accept="image/jpeg,image/png,image/webp"></label>
+          <label>Duration seconds (optional)<input type="number" name="duration_seconds" min="0" step="1" placeholder="e.g., 420"></label>
+        </div>
+        <div class="vl-upload-actions">
+          <button type="submit" class="vl-primary-btn"><i class="fa-solid fa-cloud-arrow-up"></i> Publish Video</button>
+          <span id="uploadMsg" class="vl-upload-msg"></span>
+        </div>
+      </form>
+      <div class="vl-section-head"><h3>My Videos</h3></div>
+      <div id="myVideosGrid" class="vl-grid vl-grid-manage"></div>
+    </section>
+  </main>
+
+  <script src="videos.js"></script>
+</body>
+</html>

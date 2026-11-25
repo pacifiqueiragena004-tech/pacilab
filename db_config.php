@@ -22,6 +22,23 @@ define('LEARNHUB_NOTES_ALLOWED', [
     'png'  => ['image/png'],
 ]);
 
+define('LEARNHUB_VIDEOS_UPLOAD_DIR', __DIR__ . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . 'videos');
+define('LEARNHUB_VIDEOS_THUMB_DIR', LEARNHUB_VIDEOS_UPLOAD_DIR . DIRECTORY_SEPARATOR . 'thumbnails');
+define('LEARNHUB_VIDEOS_MAX_BYTES', 100 * 1024 * 1024); // 100 MB
+define('LEARNHUB_VIDEOS_ALLOWED', [
+    'mp4'  => ['video/mp4'],
+    'webm' => ['video/webm'],
+    'ogg'  => ['video/ogg', 'application/ogg'],
+    'mov'  => ['video/quicktime'],
+    'm4v'  => ['video/x-m4v', 'video/mp4'],
+]);
+define('LEARNHUB_VIDEO_THUMBS_ALLOWED', [
+    'jpg'  => ['image/jpeg'],
+    'jpeg' => ['image/jpeg'],
+    'png'  => ['image/png'],
+    'webp' => ['image/webp'],
+]);
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -77,6 +94,7 @@ function learnhub_require_user(mysqli $db): array {
     }
     learnhub_ensure_notes_schema($db);
     learnhub_ensure_role_schema($db);
+    learnhub_ensure_videos_schema($db);
     $stmt = $db->prepare('SELECT id, name, email, role, teacher_approved, is_admin, created_at FROM users WHERE id = ? LIMIT 1');
     $stmt->bind_param('i', $uid);
     $stmt->execute();
@@ -155,6 +173,37 @@ function learnhub_notes_format_size(int $bytes): string {
     if ($bytes >= 1048576) return round($bytes / 1048576, 2) . ' MB';
     if ($bytes >= 1024) return round($bytes / 1024, 1) . ' KB';
     return $bytes . ' B';
+}
+
+function learnhub_ensure_videos_schema(mysqli $db): void {
+    static $done = false;
+    if ($done) return;
+    $db->query("CREATE TABLE IF NOT EXISTS videos (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        title VARCHAR(255) NOT NULL,
+        description TEXT NULL,
+        video_type ENUM('upload','external') NOT NULL DEFAULT 'upload',
+        video_path VARCHAR(500) NULL,
+        external_url VARCHAR(500) NULL,
+        thumbnail_path VARCHAR(500) NULL,
+        category_id INT NOT NULL,
+        course_id INT NOT NULL,
+        teacher_id INT NOT NULL,
+        duration_seconds INT UNSIGNED NOT NULL DEFAULT 0,
+        view_count INT UNSIGNED NOT NULL DEFAULT 0,
+        publication_status ENUM('draft','published') NOT NULL DEFAULT 'published',
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        INDEX idx_videos_category (category_id),
+        INDEX idx_videos_course (course_id),
+        INDEX idx_videos_teacher (teacher_id),
+        INDEX idx_videos_publication (publication_status),
+        INDEX idx_videos_created (created_at),
+        CONSTRAINT fk_videos_category FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE,
+        CONSTRAINT fk_videos_course FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE,
+        CONSTRAINT fk_videos_teacher FOREIGN KEY (teacher_id) REFERENCES users(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+    $done = true;
 }
 
 function learnhub_ensure_role_schema(mysqli $db): void {

@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LEARNHUB | Watch Video</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="videos.css">
+</head>
+<body>
+  <header class="vl-topbar">
+    <div class="vl-topbar-inner">
+      <a class="vl-brand" href="index.html"><span class="vl-brand-icon"><i class="fa-solid fa-graduation-cap"></i></span><span class="vl-brand-text"><span class="learn">LEARN</span><span class="hub">HUB</span></span></a>
+      <div class="vl-top-actions" style="margin-left:auto">
+        <a href="videos.html" class="vl-link-btn"><i class="fa-solid fa-arrow-left"></i> Video Library</a>
+        <div class="vl-user" id="vlUserLabel">Guest</div>
+      </div>
+    </div>
+  </header>
+  <main class="watch-layout">
+    <section>
+      <div class="watch-player-wrap" id="playerWrap"><div class="watch-player" id="player"></div></div>
+      <h1 class="watch-title" id="videoTitle">Loading video...</h1>
+      <div class="watch-meta" id="videoMeta"></div>
+      <div class="watch-actions">
+        <a href="videos.html" class="watch-back"><i class="fa-solid fa-arrow-left"></i> Return to Video Library</a>
+      </div>
+      <div class="watch-desc" id="videoDesc"></div>
+    </section>
+    <aside>
+      <h2 class="related-title">Related Videos</h2>
+      <div class="related-list" id="relatedList"></div>
+    </aside>
+  </main>
+  <script src="video_watch.js"></script>
+</body>
+</html>
