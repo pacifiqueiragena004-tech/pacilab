@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LEARNHUB - Learn • Practice • Grow</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" role="img" aria-label="LearnHub logo">
+            <defs>
+              <linearGradient id="cap" x1="0" x2="1">
+                <stop offset="0" stop-color="#43d17a"/>
+                <stop offset="1" stop-color="#0aa5ff"/>
+              </linearGradient>
+            </defs>
+            <path d="M32 8 6 20l26 12 26-12L32 8Z" fill="url(#cap)"/>
+            <path d="M14 26v10c0 2 8 8 18 8s18-6 18-8V26L32 35 14 26Z" fill="#1f8fff" opacity=".9"/>
+            <path d="M50 24v14" stroke="#7fd3ff" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="50" cy="41" r="3" fill="#43d17a"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">LEARN<span>HUB</span></span>
+          <span class="brand-tag">Learn • Practice • Grow</span>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary">
+        <a class="nav-link active" href="index.html"><span class="nav-icon">⌂</span> Home</a>
+        <a class="nav-link" href="course/courses.html"><span class="nav-icon">▣</span> Course <span class="caret">▾</span></a>
+        <a class="nav-link" href="#"><span class="nav-icon">ⓘ</span> About</a>
+        <div class="account-menu" data-account-menu>
+          <button type="button" class="nav-link account-toggle" data-account-toggle aria-expanded="false" aria-haspopup="true">
+            <span class="nav-icon">👤</span> <span data-auth-user-label>Account</span> <span class="caret">▾</span>
+          </button>
+          <div class="account-panel" role="menu" aria-label="Account menu">
+            <div class="account-panel-header">
+              <div>
+                <p class="account-name" data-auth-user-name>Guest</p>
+                <p class="account-role" data-auth-user-email>Not signed in</p>
+              </div>
+              <button type="button" class="account-close" data-account-close aria-label="Close account menu">×</button>
+            </div>
+            <div class="account-divider"></div>
+            <a href="#" class="account-item" role="menuitem">
+              <span class="account-item-left"><span class="account-item-icon">⚙</span><span>Settings</span></span>
+              <span class="account-chevron">›</span>
+            </a>
+            <a href="#" class="account-item" role="menuitem" data-open-auth="login" data-auth-show="logged-out">
+              <span class="account-item-left"><span class="account-item-icon">⇢</span><span>Login / Sign Up</span></span>
+              <span class="account-chevron">›</span>
+            </a>
+            <a href="#" class="account-item" role="menuitem" data-logout data-auth-show="logged-in" hidden>
+              <span class="account-item-left"><span class="account-item-icon">⎋</span><span>Sign Out</span></span>
+              <span class="account-chevron">›</span>
+            </a>
+            <a href="#" class="account-item" role="menuitem">
+              <span class="account-item-left"><span class="account-item-icon">📖</span><span>LeadManager Support</span></span>
+              <span class="account-external">↗</span>
+            </a>
+            <div class="account-manager">
+              <p class="account-manager-label">Account access</p>
+              <p class="account-manager-name" data-auth-show="logged-out">Sign in to upload and download notes.</p>
+              <p class="account-manager-name" data-auth-show="logged-in" hidden>All learning tasks are available.</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="nav-auth-btn" data-open-auth="login" data-auth-show="logged-out">Login / Sign Up</button>
+      </nav>
+
+      <form class="search" role="search" onsubmit="event.preventDefault();">
+        <input type="search" placeholder="Search courses..." aria-label="Search courses">
+        <button type="submit" aria-label="Search">🔍</button>
+      </form>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-bg">
+        <div class="grid-glow"></div>
+        <div class="network-glow"></div>
+      </div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Welcome to</p>
+          <h1><span class="learn">LEARN</span><span class="hub">HUB</span></h1>
+          <p class="lead">Your Online Learning Platform for Programming, Networking, Software, Computer Systems and IoT — plus Complete School Notes (O-Level to A-Level).</p>
+          <p class="tagline"><span class="tag-icon">▍</span> Learn at your own pace, anytime, anywhere!</p>
+          <div class="hero-actions">
+            <a href="course/courses.html" class="btn btn-primary">Start Learning <span aria-hidden="true">→</span></a>
+            <a href="#" class="btn btn-secondary"><span class="play">▶</span> Watch Video</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="code-card">
+<pre><code><span class="n">1</span>  <span class="k"># Learn Programming</span>
+<span class="n">2</span>  <span class="k">def</span> <span class="f">welcome</span>():
+<span class="n">3</span>      <span class="b">print</span>(<span class="s">"Welcome to LEARNHUB!"</span>)
+<span class="n">4</span>      <span class="k">for</span> skill <span class="k">in</span> [<span class="s">"Coding"</span>, <span class="s">"Networking"</span>,
+<span class="n">5</span>                <span class="s">"IoT"</span>, <span class="s">"Computer Systems"</span>]:
+<span class="n">6</span>          <span class="b">print</span>(f<span class="s">"Learn {skill}!"</span>)
+<span class="n">7</span>
+<span class="n">8</span>  <span class="f">welcome</span>()</code></pre>
+          </div>
+
+          <div class="orbital">
+            <svg viewBox="0 0 420 320" class="network-svg">
+              <defs>
+                <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#3cf0ff" stop-opacity="0.55"/>
+                  <stop offset="100%" stop-color="#3cf0ff" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <ellipse cx="210" cy="150" rx="170" ry="120" fill="url(#glow)"/>
+              <g stroke="#47d9ff" stroke-opacity=".35" fill="none">
+                <circle cx="210" cy="150" r="42"/>
+                <circle cx="210" cy="150" r="78"/>
+                <ellipse cx="210" cy="150" rx="130" ry="70"/>
+                <path d="M80 150h260M210 40v220M110 85c40 30 160 30 200 0M110 215c40-30 160-30 200 0"/>
+              </g>
+              <g fill="#7ff3ff">
+                <circle cx="210" cy="150" r="8"/>
+                <circle cx="130" cy="110" r="5"/>
+                <circle cx="292" cy="108" r="5"/>
+                <circle cx="120" cy="182" r="4"/>
+                <circle cx="305" cy="188" r="4"/>
+                <circle cx="210" cy="72" r="4"/>
+                <circle cx="210" cy="228" r="4"/>
+              </g>
+              <g stroke="#67e8ff" stroke-opacity=".7">
+                <line x1="210" y1="150" x2="130" y2="110"/>
+                <line x1="210" y1="150" x2="292" y2="108"/>
+                <line x1="210" y1="150" x2="120" y2="182"/>
+                <line x1="210" y1="150" x2="305" y2="188"/>
+                <line x1="130" y1="110" x2="210" y2="72"/>
+                <line x1="292" y1="108" x2="210" y2="72"/>
+              </g>
+            </svg>
+
+            <div class="device laptop">
+              <div class="screen">
+                <div class="screen-grid"></div>
+                <div class="screen-node n1"></div>
+                <div class="screen-node n2"></div>
+                <div class="screen-node n3"></div>
+                <div class="screen-lines"></div>
+              </div>
+              <div class="base"></div>
+            </div>
+
+            <div class="device board">
+              <div class="chip big"></div>
+              <div class="chip"></div>
+              <div class="chip"></div>
+              <div class="wire w1"></div>
+              <div class="wire w2"></div>
+              <div class="wire w3"></div>
+              <div class="led"></div>
+            </div>
+
+            <div class="device robot">
+              <div class="robot-board"></div>
+              <div class="wheel left"></div>
+              <div class="wheel right"></div>
+              <div class="sensor s1"></div>
+              <div class="sensor s2"></div>
+            </div>
+
+            <div class="chip-stack">
+              <span></span><span></span><span></span>
+            </div>
+
+            <div class="future-copy">
+              <p class="line1">Build Skills...</p>
+              <p class="line2">Build Your Future...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features-strip">
+      <div class="container features-card">
+        <article class="feature">
+          <div class="feature-icon blue">🎓</div>
+          <div>
+            <h3>Expert Tutorials</h3>
+            <p>Step-by-step lessons</p>
+          </div>
+        </article>
+        <article class="feature">
+          <div class="feature-icon purple">&lt;/&gt;</div>
+          <div>
+            <h3>Online Editor</h3>
+            <p>Practice Your Code</p>
+          </div>
+        </article>
+        <article class="feature">
+          <div class="feature-icon green">☰</div>
+          <div>
+            <h3>Quizzes &amp; Exercises</h3>
+            <p>Test Your Knowledge</p>
+          </div>
+        </article>
+        <article class="feature">
+          <div class="feature-icon gold">🏅</div>
+          <div>
+            <h3>Certificates</h3>
+            <p>Get Recognized</p>
+          </div>
+        </article>
+        <article class="feature">
+          <div class="feature-icon teal">👥</div>
+          <div>
+            <h3>Active Community</h3>
+            <p>Learn Together</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-gallery" aria-label="Course areas">
+      <div class="container">
+        <div class="home-gallery-head">
+          <h2><span class="accent-bar"></span>Explore Technology Areas</h2>
+          <p>Discover key learning areas in IoT, networking, computer systems, and software.</p>
+        </div>
+        <div class="home-gallery-grid">
+          <article class="home-gallery-card">
+            <img src="images/iot-bg.png" alt="IoT devices and Internet of Things">
+            <div class="home-gallery-overlay">
+              <h3>IoT Devices</h3>
+              <p>Smart devices, sensors, and connected systems.</p>
+            </div>
+          </article>
+          <article class="home-gallery-card">
+            <img src="images/course-nav-bg.png" alt="Networking and connected infrastructure">
+            <div class="home-gallery-overlay">
+              <h3>Networking</h3>
+              <p>LAN, WAN, routing, switching, and network services.</p>
+            </div>
+          </article>
+          <article class="home-gallery-card">
+            <img src="images/computer-system-bg.png" alt="Computer system and operating system concepts">
+            <div class="home-gallery-overlay">
+              <h3>Computer System</h3>
+              <p>Hardware, maintenance, troubleshooting, and operating systems.</p>
+            </div>
+          </article>
+          <article class="home-gallery-card">
+            <img src="images/software-bg.png" alt="Software and application technologies">
+            <div class="home-gallery-overlay">
+              <h3>Software</h3>
+              <p>Software development, databases, and applications.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <h2>LEARNHUB</h2>
+        <p>Learn • Practice • Grow</p>
+      </div>
+      <div class="footer-details">
+        <p><strong>Contact:</strong> <a href="tel:+250793455176">+250 793 455 176</a></p>
+        <p><strong>Email:</strong> <a href="mailto:pacifiqueiragena004@gmail.com">pacifiqueiragena004@gmail.com</a></p>
+        <p><strong>Location:</strong> KIGALI, RWANDA</p>
+      </div>
+      <div class="footer-social">
+        <p class="footer-social-title">Social Media</p>
+        <div class="social-icons" aria-label="Social media links">
+          <a href="#" aria-label="Facebook" class="social-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-8.25h2.77l.41-3.22H13.5V7.47c0-.93.26-1.57 1.6-1.57h1.71V3.02c-.3-.04-1.3-.13-2.47-.13-2.44 0-4.11 1.49-4.11 4.23v2.41H7.47v3.22h2.76V21h3.27Z"/></svg>
+          </a>
+          <a href="#" aria-label="X" class="social-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2H21l-6.53 7.46L22 22h-6.172l-4.833-6.32L5.464 22H2.706l6.985-7.98L2 2h6.328l4.37 5.777L18.244 2Zm-2.163 17.97h1.713L7.405 3.923H5.567l10.514 16.047Z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram" class="social-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5a4.25 4.25 0 0 0 4.25 4.25h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5a4.25 4.25 0 0 0-4.25-4.25h-8.5Zm8.88 1.94a1.13 1.13 0 1 1 0 2.25 1.13 1.13 0 0 1 0-2.25ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="social-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A1.97 1.97 0 1 0 5.3 6.94 1.97 1.97 0 0 0 5.25 3ZM20.44 20h-3.37v-5.59c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94V20H9.71V8.5h3.23v1.57h.05c.45-.85 1.55-1.75 3.19-1.75 3.41 0 4.04 2.24 4.04 5.16V20h.22Z"/></svg>
+          </a>
+          <a href="#" aria-label="YouTube" class="social-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.6 7.2a3 3 0 0 0-2.11-2.12C17.63 4.58 12 4.58 12 4.58s-5.63 0-7.49.5A3 3 0 0 0 2.4 7.2 31.4 31.4 0 0 0 1.9 12c0 1.61.17 3.21.5 4.8a3 3 0 0 0 2.11 2.12c1.86.5 7.49.5 7.49.5s5.63 0 7.49-.5a3 3 0 0 0 2.11-2.12c.33-1.59.5-3.19.5-4.8 0-1.61-.17-3.21-.5-4.8ZM10 15.5v-7l6 3.5-6 3.5Z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 LEARNHUB. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="auth-modal" data-auth-modal aria-hidden="true">
+    <div class="auth-dialog" role="dialog" aria-modal="true" aria-label="Login or Sign Up">
+      <button type="button" class="auth-close" data-close-auth aria-label="Close">×</button>
+      <h2>Welcome to LEARNHUB</h2>
+      <p class="auth-subtitle">Login or create an account to upload and download notes. All tasks are available for logged-in users.</p>
+      <div class="auth-tabs">
+        <button type="button" class="auth-tab active" data-auth-tab="login">Login</button>
+        <button type="button" class="auth-tab" data-auth-tab="signup">Sign Up</button>
+      </div>
+      <p class="auth-message" data-auth-message></p>
+      <form class="auth-form active" data-auth-form="login">
+        <label>Email<input type="email" name="email" required placeholder="you@example.com"></label>
+        <label>Password<input type="password" name="password" required placeholder="Your password"></label>
+        <button type="submit" class="btn btn-primary auth-submit">Login</button>
+      </form>
+      <form class="auth-form" data-auth-form="signup">
+        <input type="hidden" name="role" value="student">
+        <div class="role-select-grid" aria-label="Account type">
+          <button type="button" class="role-select-card selected" data-role-select="student">
+            <span class="role-select-icon"><i class="fa-solid fa-user-graduate"></i></span>
+            <strong>Student Account</strong>
+            <span>Access courses, read lessons, download notes, complete quizzes, and track your progress.</span>
+          </button>
+          <button type="button" class="role-select-card" data-role-select="teacher">
+            <span class="role-select-icon"><i class="fa-solid fa-chalkboard-user"></i></span>
+            <strong>Teacher Account</strong>
+            <span>Upload and organize notes, manage materials, and view student learning progress after admin approval.</span>
+          </button>
+        </div>
+        <p class="role-select-note">Teacher accounts require administrator approval before teacher privileges become active.</p>
+        <label>Full Name<input type="text" name="name" required placeholder="Your name"></label>
+        <label>Email<input type="email" name="email" required placeholder="you@example.com"></label>
+        <label>Password<input type="password" name="password" required minlength="4" placeholder="Create a password"></label>
+        <button type="submit" class="btn btn-primary auth-submit">Create Account</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
